@@ -44,7 +44,9 @@ export class LocatorFile {
         EMAIL_ERR : '//div[contains(text(),"Email is required")]',
         PW_ERR : '//div[contains(text(),"Password is required")]',
         REG_VALIDATION: '//div[@class="help-block"]',
-        PHONE_VALIDATION: '//div[contains(text(),"Only numbers are allowed.")]'
+        PHONE_VALIDATION: '//div[contains(text(),"Only numbers are allowed.")]',
+        PW_VALIDATION: '//div[contains(text(),"Password must be minimal 6 characters long.")]',
+        PW_VISIBILITY_BTN : '//button[@class="btn btn-outline-secondary"]'
       };
     }
 
