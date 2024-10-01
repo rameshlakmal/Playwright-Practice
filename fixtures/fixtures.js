@@ -16,7 +16,10 @@ export const test = base.extend({
     },
 
     locators: async({},use) =>{
-        const locators = LocatorFile.LoginPageLocators;  // Access the locators
+        const locators = {
+            ...LocatorFile.LoginPageLocators,  // Access the locators
+            ...LocatorFile.RegistrationPageLocators
+        }
         await use(locators);
     },
 

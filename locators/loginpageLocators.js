@@ -14,7 +14,25 @@ export class LocatorFile {
         REG_PAGE_LINK : '//a[normalize-space()="Register your account"]',
         FORGOT_PW_LINK : '//a[normalize-space()="Forgot your Password?"]',
         PW_VISIBILITY_BTN : '//button[@class="btn btn-outline-secondary"]'
-
+    };
   }
-}
+
+
+    static get RegistrationPageLocators(){
+      return{
+        REG_BTN_XPATH : '//button[normalize-space()="Register"]',
+        FIRST_NAME_ERR : '//div[contains(text(),"First name is required")]',
+        LAST_NAME_ERR : '//div[contains(text(),"fields.last-name.required")]',
+        DOB_ERR : '//div[contains(text(),"Date of Birth is required")]',
+        ADDRESS_ERR : '//div[contains(text(),"Address is required")]',
+        POSTAL_CODE_ERR : '//div[contains(text(),"Postcode is required")]',
+        CITY_ERR : '//div[contains(text(),"City is required")]',
+        STATE_ERR : '//div[contains(text(),"State is required")]',
+        COUNTRY_ERR : '//div[contains(text(),"Country is required")]',
+        PHONE_NUMBER_ERR : '//div[contains(text(),"Phone is required.")]',
+        EMAIL_ERR : '//div[contains(text(),"Email is required")]',
+        PW_ERR : '//div[contains(text(),"Password is required")]'
+      };
+    }
+
 }

@@ -10,5 +10,28 @@ export default class RegistrationPage {
 
 
     
+    async registrationPage(){
+        await this.actions.navigate('https://practicesoftwaretesting.com/auth/register')
+    }
+
+
+    async getErrorMessage(xpath){
+        return await this.actions.getText(xpath)
+    }
+
+    async assertErrorMessage(xpath,expectedMessage){
+        const actualMessage = await this.getErrorMessage(xpath)
+        expect(actualMessage).toContain(expectedMessage)
+    }
+
+    async getURL(){
+        return await this.actions.getCurrentUrl()
+    }
+
+    async assertCurrentURL(verifyURL){
+        const currentURL = await this.getURL()
+        expect(currentURL).toContain(verifyURL)
+    }
+
 
 }
