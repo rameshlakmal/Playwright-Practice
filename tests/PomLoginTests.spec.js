@@ -34,6 +34,14 @@ test.describe('Login Test' , () => {
         await loginPage.assertErrorMessage(locators.LOGIN_PW_ERR,'Password is required')
     })
 
+    test('Login without username and password',async ({loginPage,locators}) => {
+        await loginPage.loginPage();
+        await loginPage.login('','') 
+        await loginPage.assertErrorMessage(locators.LOGIN_PW_ERR,'Password is required')
+        await loginPage.assertErrorMessage(locators.LOGIN_EMAIL_ERR,'Email is required')
+
+    })
+
     test('Login with invalid email format',async ({loginPage,locators}) => {
         await loginPage.loginPage();
         await loginPage.login('rameshmailinator.com','Mangotree@1999') 

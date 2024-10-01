@@ -9,7 +9,9 @@ export default class LoginPage {
     }
 
     async loginPage(){
-        await this.actions.navigate('https://practicesoftwaretesting.com/auth/login')
+        await this.actions.navigate('https://practicesoftwaretesting.com/')
+        await this.actions.click(this.locators.LOGIN_PAGE_LINK)
+
     }
 
     async login(username, password){

@@ -1,6 +1,7 @@
 export class LocatorFile {
     static get LoginPageLocators() {
       return {
+        LOGIN_PAGE_LINK : '//*[@id="navbarSupportedContent"]/ul/li[4]/a',
         ENTER_USERNAME : '#email',
         ENTER_PASSWORD : 'input[placeholder="Your password"]',
         PW_XPATH : '/html[1]/body[1]/app-root[1]/div[1]/app-login[1]/div[1]/div[1]/div[1]/form[1]/div[2]/app-password-input[1]/div[1]/input[1]',
