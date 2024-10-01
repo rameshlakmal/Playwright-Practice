@@ -2,14 +2,14 @@ import {test,expect} from "../fixtures/fixtures.js"
 
 
 
-test.describe('Login Test' , () => {
+test.describe('Registration form test cases' , () => {
 
     test.afterEach(async ({page}) => {
         await page.close()
     })
 
 
-    test('Register without empty required fields', async ({ registrationPage, locators, commonActions }) => {
+    test('Verify that customer cannot complete registration with empty required fields', async ({ registrationPage, locators, commonActions }) => {
         await registrationPage.registrationPage();
         await commonActions.click(locators.REG_BTN_XPATH);
     
@@ -32,6 +32,86 @@ test.describe('Login Test' , () => {
         for (const { locator, message } of errorChecks) {
             await registrationPage.assertErrorMessage(locator, message);
         }
+    });
+
+    test('Verify that customer can register successfully with valid details', async ({ registrationPage, locators, commonActions,page }) => {
+        await registrationPage.registrationPage();
+        await registrationPage.enterFirstName('Ramesh')
+        await registrationPage.enterLastName('Lakmal')
+        await registrationPage.enterDOB('12/13/1999')
+        await registrationPage.enterAddress('34,Kandy,Peradeniya')
+        await registrationPage.enterPostCode('31242')
+        await registrationPage.enterCity('Kandy')
+        await registrationPage.enterState('Central Province')
+        await registrationPage.selectCountry('LK')
+        await registrationPage.enterPhoneNumber('0770740389')
+        await registrationPage.enterEmail('ramesdhs@mailinator.com')
+        await registrationPage.enterPassword('FR3sf@1999')
+
+        await commonActions.click(locators.REG_BTN_XPATH);
+
+
+        await page.waitForURL('https://practicesoftwaretesting.com/auth/login');
+        await registrationPage.assertCurrentURL('https://practicesoftwaretesting.com/auth/login')
+    });
+
+
+    test('Verify that customer should be 18+ years old to complete the registration', async ({ registrationPage, locators, commonActions,page }) => {
+        await registrationPage.registrationPage();
+        await registrationPage.enterFirstName('Ramesh')
+        await registrationPage.enterLastName('Lakmal')
+        await registrationPage.enterDOB('10/10/2024')
+        await registrationPage.enterAddress('34,Kandy,Peradeniya')
+        await registrationPage.enterPostCode('31242')
+        await registrationPage.enterCity('Kandy')
+        await registrationPage.enterState('Central Province')
+        await registrationPage.selectCountry('LK')
+        await registrationPage.enterPhoneNumber('0770740389')
+        await registrationPage.enterEmail('ramesdhs@mailinator.com')
+        await registrationPage.enterPassword('FR3fsf@1999')
+
+        await commonActions.click(locators.REG_BTN_XPATH);
+
+        await registrationPage.assertErrorMessage(locators.REG_VALIDATION,'Customer must be 18 years old.')
+    });
+
+    test('Verify that customer cannot register using same email more than once', async ({ registrationPage, locators, commonActions,page }) => {
+        await registrationPage.registrationPage();
+        await registrationPage.enterFirstName('Ramesh')
+        await registrationPage.enterLastName('Lakmal')
+        await registrationPage.enterDOB('13/12/1999')
+        await registrationPage.enterAddress('34,Kandy,Peradeniya')
+        await registrationPage.enterPostCode('31242')
+        await registrationPage.enterCity('Kandy')
+        await registrationPage.enterState('Central Province')
+        await registrationPage.selectCountry('LK')
+        await registrationPage.enterPhoneNumber('0770740389')
+        await registrationPage.enterEmail('ramesh@mailinator.com')
+        await registrationPage.enterPassword('FR3fsf@1999')
+
+        await commonActions.click(locators.REG_BTN_XPATH);
+
+        await registrationPage.assertErrorMessage(locators.REG_VALIDATION,'A customer with this email address already exists.')
+    });
+
+
+    test('Verify that customer cannot register by entering letters to the phone number field', async ({ registrationPage, locators, commonActions,page }) => {
+        await registrationPage.registrationPage();
+        await registrationPage.enterFirstName('Ramesh')
+        await registrationPage.enterLastName('Lakmal')
+        await registrationPage.enterDOB('13/12/1999')
+        await registrationPage.enterAddress('34,Kandy,Peradeniya')
+        await registrationPage.enterPostCode('31242')
+        await registrationPage.enterCity('Kandy')
+        await registrationPage.enterState('Central Province')
+        await registrationPage.selectCountry('LK')
+        await registrationPage.enterPhoneNumber('sdfsdfgsgfhg')
+        await registrationPage.enterEmail('ramesh@mailinator.com')
+        await registrationPage.enterPassword('FR3fsf@1999')
+
+        await commonActions.click(locators.REG_BTN_XPATH);
+
+        await registrationPage.assertErrorMessage(locators.PHONE_VALIDATION,'Only numbers are allowed.')
     });
     
 

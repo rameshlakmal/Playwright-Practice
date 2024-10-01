@@ -1,3 +1,5 @@
+import { selectors } from "@playwright/test";
+
 export default class CommonAction{
     constructor(page){
         this.page = page;
@@ -14,6 +16,10 @@ export default class CommonAction{
 
     async fill(selector, text){
         await this.page.fill(selector, text)
+    }
+
+    async type(selector,text,delay){
+        await this.page.type(selector,text,delay)
     }
 
     async getText(selector){

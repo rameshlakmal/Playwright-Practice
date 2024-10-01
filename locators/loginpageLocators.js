@@ -20,6 +20,17 @@ export class LocatorFile {
 
     static get RegistrationPageLocators(){
       return{
+        FIRST_NAME: '#first_name',
+        LAST_NAME: '#last_name',
+        DOB: '//input[@id="dob"]',
+        ADDRESS: '//input[@id="address"]',
+        POST_CODE: '//input[@id="postcode"]',
+        CITY: '//input[@id="city"]',
+        STATE: '//input[@id="state"]',
+        COUNTRY: '//select[@id="country"]',
+        PHONE: '//input[@id="phone"]',
+        EMAIL: '//input[@id="email"]',
+        PW: '//input[@id="password"]',
         REG_BTN_XPATH : '//button[normalize-space()="Register"]',
         FIRST_NAME_ERR : '//div[contains(text(),"First name is required")]',
         LAST_NAME_ERR : '//div[contains(text(),"fields.last-name.required")]',
@@ -31,7 +42,9 @@ export class LocatorFile {
         COUNTRY_ERR : '//div[contains(text(),"Country is required")]',
         PHONE_NUMBER_ERR : '//div[contains(text(),"Phone is required.")]',
         EMAIL_ERR : '//div[contains(text(),"Email is required")]',
-        PW_ERR : '//div[contains(text(),"Password is required")]'
+        PW_ERR : '//div[contains(text(),"Password is required")]',
+        REG_VALIDATION: '//div[@class="help-block"]',
+        PHONE_VALIDATION: '//div[contains(text(),"Only numbers are allowed.")]'
       };
     }
 
