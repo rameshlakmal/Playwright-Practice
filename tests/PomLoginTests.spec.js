@@ -10,7 +10,7 @@ test.describe('Login form test cases' , () => {
 
     test('Verify that user can login to the system with valid credentials', async ({loginPage,page}) => {
         await loginPage.loginPage();
-        await loginPage.login('ramesh@mailinator.com','Mangotree@1999')
+        await loginPage.login('gihaan@mailinator.com','Mangotree@1999')
         await page.waitForURL('https://practicesoftwaretesting.com/account');
         await loginPage.assertCurrentURL('https://practicesoftwaretesting.com/account')
     })

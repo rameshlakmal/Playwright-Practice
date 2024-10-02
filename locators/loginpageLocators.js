@@ -50,4 +50,15 @@ export class LocatorFile {
       };
     }
 
+
+    
+    static get CartPageLocators(){
+      return{
+        HOME: '//a[normalize-space()="Home"]',
+        MIN: '//*[@id="filters"]/div[1]/ngx-slider/span[5]',
+        MAX: '//*[@id="filters"]/div[1]/ngx-slider/span[6]'
+
+      };
+    }
+
 }
