@@ -3,7 +3,7 @@ import CommonAction from "../utils/commonactions.js";
 import LoginPage from "../pages/loginpage.js"
 import {LocatorFile} from '../Locators/LoginPageLocators.js'
 import RegistrationPage from "../pages/registrationpage.js";
-import CartPage from "../pages/cartpage.js";
+import HomePage from "../pages/homepage.js";
 
 export const test = base.extend({
     loginPage: async({page},use) => {
@@ -30,9 +30,9 @@ export const test = base.extend({
         await use(registrationPage);
     },
 
-    cartPage: async({page},use) => {
-        const cartPage = new CartPage(page);
-        await use(cartPage);
+    homePage: async({page},use) => {
+        const homePage = new HomePage(page);
+        await use(homePage);
     }
 });
 

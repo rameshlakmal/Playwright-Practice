@@ -52,12 +52,16 @@ export class LocatorFile {
 
 
     
-    static get CartPageLocators(){
+    static get HomePageLocators(){
       return{
         HOME: '//a[normalize-space()="Home"]',
         MIN: '//*[@id="filters"]/div[1]/ngx-slider/span[5]',
-        MAX: '//*[@id="filters"]/div[1]/ngx-slider/span[6]'
-
+        MAX: '//*[@id="filters"]/div[1]/ngx-slider/span[6]',
+        ADD_TO_CART: '//button[@id="btn-add-to-cart"]',
+        PRODUCT_1: '//img[@alt="Combination Pliers"]',
+        PRODUCT_4: '//img[@alt="Long Nose Pliers"]',
+        UNIT_PRICE: '//span[@aria-label="unit-price"]',
+        CART_COUNT: '//span[@id="lblCartCount"]',
       };
     }
 

@@ -2,18 +2,29 @@ import { expect } from '@playwright/test'
 import CommonAction from '../utils/commonactions.js'
 import { LocatorFile } from '../Locators/LoginPageLocators.js'
 
-export default class CartPage {
+export default class HomePage {
     constructor(page) {
         this.actions = new CommonAction(page)
-        this.cartLocators = LocatorFile.CartPageLocators;
-        this.registrationLocators= LocatorFile.RegistrationPageLocators;
-        this.loginLocators = LocatorFile.LoginPageLocators;
+        this.HomeLocators = LocatorFile.HomePageLocators;
     }
 
 
-    async homePage(){
+    async NavhomePage(){
         await this.actions.navigate('https://practicesoftwaretesting.com/')
     }
+
+    async selectProductOne(){
+        await this.actions.click(this.HomeLocators.PRODUCT_1)
+    }
+
+    async selectProduct(locator){
+        await this.actions.click(locator)
+    }
+    
+    async clickAddToCart(){
+        await this.actions.click(this.HomeLocators.ADD_TO_CART)
+    }
+
 
     async getErrorMessage(xpath){
         return await this.actions.getText(xpath)
@@ -23,6 +34,20 @@ export default class CartPage {
         const actualMessage = await this.getErrorMessage(xpath)
         expect(actualMessage).toContain(expectedMessage)
     }
+
+
+
+
+    async getTextValue(xpath){
+        return await this.actions.getText(xpath)
+    }
+
+    async assertTextValue(xpath,expectedTextValue){
+        const actualTextValue = await this.getTextValue(xpath)
+        expect(actualTextValue).toContain(expectedTextValue)
+    }
+
+
 
     async getURL(){
         return await this.actions.getCurrentUrl()
