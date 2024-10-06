@@ -26,9 +26,12 @@ export default class CommonAction{
         return await this.page.textContent(selector)
     }
 
-    async isChecked(selector){
-        return await this.page.isChecked(selector)
+    async check(selector){
+        return await this.page.check(selector)
     }
+
+
+
 
     async selectDropdown(selector, value){
         await this.page.selectOption(selector, value);

@@ -61,6 +61,8 @@ export class LocatorFile {
         PRODUCT_1: '//img[@alt="Combination Pliers"]',
         PRODUCT_4: '//img[@alt="Long Nose Pliers"]',
         UNIT_PRICE: '//span[@aria-label="unit-price"]',
+        SEARCH_BAR: '//input[@id="search-query"]',
+        SEARCH_BTN: '//button[normalize-space()="Search"]',
         CART_COUNT: '//span[@id="lblCartCount"]',
       };
     }
